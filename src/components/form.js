@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import MyTextfield from './myTextfield.js';
 import userContext from './userContext';
-import Button from './Button';
+import Button from './button';
 
-const Form = () => {
+function Form () {
     const {username, setUsername} = useContext(userContext);
     const [password, setPassword] = useState('');
 
@@ -28,25 +28,18 @@ const Form = () => {
         return true;
     }
 
-    const handleValidation = () => {
-        if (username && password) {
-            return validatePassword(password);
-        } else {
-            return false;
-        }
-    }
-
     // when user submits form
     const handleSubmit = (event) => {
-        console.log(username);
-        console.log(password);
-        if (handleValidation()) {
-            alert('Hi ' + username + '. Youre logged in :)');
-            return history.push('./home');
+        if ((!username && !password) || !username || !password) {
+            alert('Please fill in both username and password fields.');
         } else {
-            alert("Invalid input, try again.");
+            if (validatePassword(password)){
+                alert('Hi ' + username + '. Youre logged in :)');
+                history.push('/home');
+            } else {
+                alert('Invalid password input, try again.')
+            }
         }
-        
         event.preventDefault();
     }
 
@@ -62,11 +55,9 @@ const Form = () => {
                     setValueFunction={setPassword} />
                 <br />
                 <Button buttonName="Login" />
-                {/* <button className="button" type="submit" value="Submit">Login</button> */}
             </form>
         </div>
-        
-    )
+    );
 }
 
 export default Form;

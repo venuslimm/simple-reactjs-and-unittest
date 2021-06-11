@@ -6,7 +6,7 @@ const Home = () => {
       <div className="Welcome">
         <Greeting />
       </div>
-  );
+  )
 }
 
 export default Home;

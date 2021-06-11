@@ -14,6 +14,8 @@ const MyTextfield = (props) => {
         <div className="field">
             <label>{capitaliseFirstLetter(props.name)}</label><br/>
             <input className="MyTextfield"
+                data-testid={props.name}
+                id={props.name}
                 type={props.type}
                 value={props.username}
                 onChange={handleInputChange}
