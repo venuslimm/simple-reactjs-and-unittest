@@ -123,6 +123,10 @@ describe('Login Function', () => {
         });
     });
 
+    /* Styling testing should not be done on the unit testing level since unit testing is testing for its
+    functionality/logic. Snapshot testing can be done to perform styling testing instead. Unit testing for styles
+    can only check the value but does not check the components visually */
+
     // describe("Button styles", () => {
     //     const restingButtonStyles = `
     //         background-color: white;
